@@ -67,7 +67,7 @@ async function start() {
   }
 
   app.all('*', (req, res, next) => {
-    if (req.path == "/login")
+    if (req.path == "/login" || req.path.match('assets'))
       next()
     else
       ensureAuth(req, res, next)

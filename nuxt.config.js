@@ -15,7 +15,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', crossorigin: 'anonymouse', href: 'https://use.fontawesome.com/releases/v5.8.1/css/all.css', integrity: 'sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' }
     ]
   },
 
@@ -43,6 +44,7 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/moment'
   ],
   /*
   ** Axios module configuration
@@ -74,7 +76,7 @@ module.exports = {
     google: {
       id: process.env.G_ID || "",
       secret: process.env.G_SECRET || "",
-      mapskey: process.env.GMAPS_KEY || ""
+      mapskey: process.env.GMAPS_KEY || "AIzaSyC6oEh-GSdwGkWJj9JqEDF-FgqR6nAPGVc"
     },
     api: {
       url: process.env.APIURL || 'https://rhbackendapi.azurewebsites.net/api',

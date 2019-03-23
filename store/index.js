@@ -3,7 +3,8 @@ export const state = () => ({
     counter: 0,
     user: null,
     userid: null,
-    socketConn: null
+    socketConn: null,
+    nav: false
 })
 
 export const mutations = {
@@ -19,6 +20,9 @@ export const mutations = {
     location(state,data) {
         state.user.lat = data.lat
         state.user.longit = data.lng
+    },
+    toggleNav(state) {
+        state.nav = !state.nav
     }
 }
 
