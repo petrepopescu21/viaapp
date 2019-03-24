@@ -1,5 +1,5 @@
 <template>
-    <component :is="userSpecificVue" :requests="reqs" />
+    <component :is="userSpecificVue" :reqs="reqs" />
 </template>
 
 <script>
@@ -39,6 +39,7 @@ export default {
         accountType: this.user.accountType
       })
       .then(res => {
+        console.log(res.data)
         this.reqs = res.data;
       })
       .catch(err => {

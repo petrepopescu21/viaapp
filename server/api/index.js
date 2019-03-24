@@ -2,6 +2,12 @@ var axios = require('axios')
 var express = require('express')
 var api = express.Router()
 var config = require("../../nuxt.config")
+
+const socket = require('socket.io')
+const server = http.createServer(app)
+const io = socket(server)
+
+
 const gc = require('@google/maps').createClient({
     key: config.server.google.mapskey,
     Promise: Promise
@@ -41,6 +47,19 @@ api.post('/users',(req,res)=>{
 
 api.post('/requests',(req,res)=>{
     a.post('/helprequests',req.body).then(response=>{
+        res.send(response.data)
+    })
+})
+
+api.post('/requests/apply',(req,res)=>{
+    a.post('/helprequestregistrations',req.body).then(response=>{
+        res.send(response.data)
+    })
+})
+
+api.post('/requests/accept',(req,res)=>{
+    a.patch('/helprequestregistrations',req.body).then(response=>{
+        io.broadcast('accept',response.data)
         res.send(response.data)
     })
 })

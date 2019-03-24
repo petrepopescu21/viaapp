@@ -10,14 +10,17 @@
             <!-- <div class="event-date">
                 March 27, 2019
             </div> -->
-            <div v-for="r in reqs" :key="r._id" class="event-card" role="button" :aria-roledescription="`View: ${r.title}`">
+            <nuxt-link :to="`/requests/${r._id}/volunteers`" v-for="r in reqs" :key="r._id" class="event-card" role="button" :aria-roledescription="`View: ${r.title}`">
+                
                 <h2 class="event-title">
-                    {{title}}
+                    {{r.title}}
                 </h2>
                 <div class="volunteers-count" aria-label="5 volunteers">
-                    10 volunteers
+                    {{r.userRegistrations.length}} volunteers
                 </div>
-            </div>
+
+
+            </nuxt-link>
 
             
             

@@ -31,8 +31,9 @@
             </div>
 
             <div role="navigation" class="view-needs">
-                    <button class="third-bt primary-bt bt-green" role="button" aria-label="Go to Sign Up">ACCEPT REQUEST</button>
-                </div>
+                    <button v-if="!applied" class="third-bt primary-bt bt-green" role="button" aria-label="Offer your help" v-on:click="apply">OFFER YOUR HELP</button>
+                    <button v-if="applied" class="third-bt primary-bt bt-green" style="background-color:#555;" role="button" aria-label="Already applied">ALREADY APPLIED</button>
+            </div>
 
             
         </div>    
@@ -66,6 +67,11 @@ export default {
         if (this.addrObj!=null)
             return this.addrObj.json.results[0].formatted_address || null
         else return null
+    },
+    applied() {
+        return this.item.userRegistrations.filter(x=>{
+            return x._id === this.user._id
+        }).length>0
     }
   },
   created() {
@@ -87,6 +93,18 @@ export default {
       .catch(err => {
         this.$router.push("/");
       });
+  },
+  methods: {
+      apply() {
+          this.$axios.post(`/api/requests/apply`,{
+              _id: this.item._id,
+              _userId: this.user._id
+          }).then(res=>{
+              this.$router.push('/')
+          }).catch(err=>{
+              console.log(err)
+          })
+      }
   }
 };
 </script>

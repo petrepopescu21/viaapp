@@ -8,7 +8,7 @@
                 
             </div>
             <div v-if="request">
-                <user-card v-for="u in request.userRegistrations" v-bind:key="u._id" :id="u._id" />
+                <user-card v-for="u in request.userRegistrations" v-bind:key="u._id" :id="u._id" :eventId="request._id" :isConfirmed="u.isConfirmed"/>
             </div>
         </div>
 </template>

@@ -364,6 +364,8 @@ header{
   font-size: 16px;
 }
 .event-card{
+  display: block;
+  color: white;
   background: #30002B;
   border-radius: 5px;
   padding: 1em;
@@ -509,3 +511,5 @@ h1.h1-title.req-prev-title {
  .fa-question {
    color: #ffffff;
  }
+
+ 

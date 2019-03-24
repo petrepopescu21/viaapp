@@ -1,6 +1,6 @@
 <template>
     <div id="main" role="main">
-      <h1 class="h1-title">All requests around you</h1>
+      <h1 class="h1-title">Requests you've engaged</h1>
             <div v-for="(r,index) in reqs" :tabindex="index" :key="r._id" class="event-card" role="button" :aria-roledescription="`View: ${r.title}`">
                 <h2 class="event-title">
                     {{r.title}}
@@ -12,7 +12,8 @@
                 <nuxt-link :to="`/requests/${r._id}`" class="third-bt view-task" role="button" aria-label="View task">View task</nuxt-link>
             </div>
             <div id="map" class="map"></div>
-            <div v-for="(r,index) in requests" :tabindex="index" :key="r._id" class="event-card" role="button" :aria-roledescription="`View: ${r.title}`">
+            <h1 class="h1-title">Other requests around you</h1>
+            <div v-for="(r,index) in filteredRequests" :tabindex="index" :key="r._id" class="event-card" role="button" :aria-roledescription="`View: ${r.title}`">
                 <h2 class="event-title">
                     {{r.title}}
                 </h2>
@@ -40,6 +41,13 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    filteredRequests() {
+      return this.requests.filter(x=>{
+        return !this.reqs.some(function(i){
+          return i._id == x._id
+        })
+      })
     }
   },
   methods: {
@@ -67,7 +75,7 @@ export default {
       .then(res => {
         // this.$axios.get(`/api/requests/44.425401/26.10249`).then(res => {
         this.requests = res.data;
-        this.addMarkers(res.data);
+        // this.addMarkers(res.data);
       });
   },
   mounted() {
@@ -86,6 +94,10 @@ export default {
 .map {
   width: 100%;
   height: 400px;
+  margin: 1em 0;
+}
+
+.h1-title {
   margin: 1em 0;
 }
 </style>

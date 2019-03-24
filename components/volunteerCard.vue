@@ -9,7 +9,10 @@
                     <div class="card-rating" >
                         <span aria-label="user rating 158"><i class="fas fa-heart"></i> 158</span> | <span aria-label="user badges">5 badges</span>
                     </div>
-                    <nuxt-link :to="`/volunteers/${user._id}`" class="third-bt view-vol-bt only-profile" role="button" aria-label="View volunteer profile">View profile</nuxt-link>
+                    
+                    <button v-if="!isConfirmed" v-on:click="accept" class="third-bt accept-bt" role="button" aria-label="Accept volunteer">Accept</button>
+                    <nuxt-link v-if="!isConfirmed" :to="`/volunteers/${user._id}`" class="third-bt view-vol-bt" role="button" aria-label="View volunteer profile">View</nuxt-link>
+                    <nuxt-link v-if="isConfirmed" :to="`/volunteers/${user._id}`" class="third-bt accept-bt" role="button" aria-label="View volunteer profile">View</nuxt-link>
                 </div>
             </div>
         </div>
@@ -22,11 +25,21 @@ export default {
       user: null
     };
   },
-  props: ["id"],
+  props: ["id","eventId","isConfirmed"],
   created() {
     this.$axios.get(`/api/users/${this.id}`).then(res => {
       this.user = res.data;
     });
+  },
+  methods: {
+    accept() {
+      this.$axios.post('/api/requests/accept',{
+        _id: this.eventId,
+        _userId: this.id
+      }).then(res=>{
+        this.isConfirmed = true
+      })
+    }
   }
 };
 </script>
