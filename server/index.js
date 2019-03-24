@@ -101,8 +101,13 @@ async function start() {
       room = "volunteers"
 
     socket.join(room)
+
     socket.on('location',function(data){
       s.sendLocation(data.user, data.pos)
+    })
+
+    socket.on('newrequest',function(data){
+      socket.to('volunteers').emit('newrequestreceived',data)
     })
     // socket.on('location', function (fn) {
     //   console.log('location Update')

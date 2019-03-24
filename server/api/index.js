@@ -39,6 +39,22 @@ api.post('/users',(req,res)=>{
     })
 })
 
+api.post('/requests',(req,res)=>{
+    a.post('/helprequests',req.body).then(response=>{
+        res.send(response.data)
+    })
+})
+
+api.get('/requests/:id',(req,res)=>{
+    console.log(req.params)
+    a.get(`/helprequests/${req.params.id}`).then(response=>{
+        res.send(response.data)
+    }).catch(err=>{
+        res.status(404)
+        res.send(err)
+    })
+})
+
 api.get('/requests/:lat/:lng',(req,res)=>{
     a.get(`/helprequests/${req.params.lat}/${req.params.lng}`).then(response=>{
         res.send(response.data)

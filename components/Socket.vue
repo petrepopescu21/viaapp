@@ -6,7 +6,7 @@
 import io from 'socket.io-client'
 export default {
     mounted() {
-        this.$store.commit('socketConn', io(process.env.WS_URL, {
+        this.$store.commit('socketConn', io({
             query: {
                 user: this.$store.state.user
             }

@@ -3,6 +3,7 @@
     <template v-if="user">
       <socket v-if="user.accountType>=0" />
       <locator v-if="sock" />
+      <notifier />
     </template>
     <navigator v-if="nav" />
     <header v-if="!nav" class="pages-menu">
@@ -16,11 +17,11 @@
 
 <script>
 import Navigator from "~/components/Navigator";
-// import socket from '~/plugins/socket.io.js'
+import Notifier from "~/components/Notifier";
 import Socket from "~/components/Socket";
 import Locator from "~/components/Locator";
 export default {
-  components: { Socket, Locator, Navigator },
+  components: { Socket, Locator, Navigator, Notifier },
   mounted() {
     this.initUser();
   },

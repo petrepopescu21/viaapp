@@ -39,6 +39,8 @@ export default {
                   title: i.title
               })
           })
+          let c = new google.maps.LatLng(this.user.lat,this.user.longit)
+          this.map.panTo(c)
       }
   },
   created() {
@@ -62,7 +64,8 @@ export default {
 
 <style>
 .map {
-    height: 300px;
-    width: 80%;
+    height: 400px;
+    width: 100%;
+    margin-bottom: 30px;
 }
 </style>
