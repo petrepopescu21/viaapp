@@ -19,7 +19,7 @@
                     <input id="event-date-time" type="datetime-local" name="event-date-time" required aria-required="true" v-model="item.start">
                 </div>
                 <div>
-                    <label for="event-people">Nr. of people who can help</label>
+                    <label for="event-people">No. of people who can help</label>
                     <input id="event-people" type="number" name="event-people" v-model="item.count">
                 </div>
                 <div>
@@ -93,9 +93,6 @@ export default {
           this.$store.state.socketConn.emit('newrequest',res.data)
           this.$router.push('/')
       })
-    },
-    getCurrentLoc() {
-      // console.log(locString);
     },
     getList: debounce(function() {
       if (this.keyboard != "")

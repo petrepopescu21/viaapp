@@ -28,7 +28,7 @@
                     <span aria-label="location"><i class="fas fa-map-marker-alt"></i><geolocator :lat="r.lat" :lng="r.longit"></geolocator></span>
                     <span aria-label="date-time"><i class="fas fa-calendar-alt"></i><span v-html="`Event date/time: ${$moment(r.starts).format('ddd, hA')}`"></span></span>
                 </div>
-                <nuxt-link :to="`/requests/${r._id}`" class="third-bt view-task" role="button" aria-label="View task">View task</nuxt-link>
+                <nuxt-link :to="`/requests/${r._id}`" :tabindex="index+reqs.length+4" class="third-bt view-task" role="button" aria-label="View task">View task</nuxt-link>
             </div>
         </div>
     </div>

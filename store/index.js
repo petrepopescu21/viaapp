@@ -4,7 +4,10 @@ export const state = () => ({
     user: null,
     userid: null,
     socketConn: null,
-    nav: false
+    nav: false,
+    openend: false,
+    openrate: false,
+    openedit: false
 })
 
 export const mutations = {
@@ -23,6 +26,15 @@ export const mutations = {
     },
     toggleNav(state) {
         state.nav = !state.nav
+    },
+    toggleEnd(state) {
+        state.openend = !state.openend
+    },
+    toggleRate(state) {
+        state.openrate = !state.openrate
+    },
+    toggleEdit(state) {
+        state.openedit = !state.openedit
     }
 }
 

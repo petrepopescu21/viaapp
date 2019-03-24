@@ -64,7 +64,7 @@ export default {
       return this.$store.state.user;
     },
     addr() {
-        if (this.addrObj!=null)
+        if (this.addrObj!=null && this.addrObj.json.results.length>0)
             return this.addrObj.json.results[0].formatted_address || null
         else return null
     },

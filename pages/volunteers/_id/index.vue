@@ -7,7 +7,7 @@
             <div class="user-rating" >
                 <span aria-label="user rating 158"><i class="fas fa-heart"></i> 158</span> | <span aria-label="user badges">5 badges</span>
             </div>
-            <p class="sub-header profile-sub-header">Hi {{user.firstName}}, here is your list of active events where you are enrolled.</p>
+            <!-- <p class="sub-header profile-sub-header">Hi {{user.firstName}}, here is your list of active events where you are enrolled.</p> -->
 
             <div role="navigation" class="view-needs">
             <button class="third-bt primary-bt add-to-fav-bt" role="button" aria-label="Add to favorites">Add to favorites</button>

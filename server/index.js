@@ -12,7 +12,8 @@ const s = require('./api/socketHandlers')
 const app = express()
 const server = http.createServer(app)
 const io = socket(server)
-
+var cors = require('cors')
+app.use(cors())
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(session({

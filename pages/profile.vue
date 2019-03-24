@@ -1,7 +1,7 @@
 <template>
 <div id="main" role="main">
             <h1 class="h1-title req-prev-title">Choose the account type!</h1>
-            <p class="sub-header request-dec">Hi {{this.user.firstName}}, here is your list of active events where you are enrolled.</p>
+            <!-- <p class="sub-header request-dec">Hi {{this.user.firstName}}, here is your list of active events where you are enrolled.</p> -->
 
     <!-- <profile-form :value="user" @input="(newUser)=>{user=newUser}"></profile-form> -->
     <div role="navigation" class="view-needs">

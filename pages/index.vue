@@ -40,7 +40,9 @@ export default {
       })
       .then(res => {
         // console.log(res.data)
-        this.reqs = res.data;
+        this.reqs = res.data.filter(x=>{
+          return x.isUrgent==false
+        });
       })
       .catch(err => {
         console.log(err);

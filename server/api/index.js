@@ -23,6 +23,15 @@ api.all('*',(req,res,next)=>{
     next()
 })
 
+api.get('/events/:lat/:lng',(req,res)=>{
+    a.get(`/events/${req.params.lat}/${req.params.lng}`).then(response=>{
+        res.send(response.data)
+    }).catch(err=>{
+        res.status(500)
+        res.send("Error getting events")
+    })
+})
+
 api.get('/users/:id',(req,res)=>{
     a.get(`/users/${req.params.id}`).then(response=>{
         res.send(response.data)
@@ -46,6 +55,9 @@ api.post('/users',(req,res)=>{
 api.post('/requests',(req,res)=>{
     a.post('/helprequests',req.body).then(response=>{
         res.send(response.data)
+    }).catch(err=>{
+        res.status(400)
+        res.send("Eroare")
     })
 })
 

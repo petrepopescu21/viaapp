@@ -140,15 +140,15 @@ button{
       }
     }
     @media(min-width: 415px){
-      max-width: 300px;
+      max-width: auto;
     }
   }
   p{
     max-width: 100%;
     margin-top: 0;
-    margin: 0 auto;
+    margin: 0 auto 15px;
     @media(min-width: 415px){
-      max-width: 500px;
+      max-width: 800px;
     }
     &.sub-header{
       margin-bottom: 1em;
@@ -379,6 +379,7 @@ header{
     max-width: 150px;
     text-align: center;
     padding: 3px 10px;
+    font-weight: bold;
   }
 }
 .from{
@@ -414,7 +415,7 @@ header{
   background: #F0EFEF;
   position: relative;
   &.request-profile{
-    max-width: 320px;
+    max-width: 800px;
     margin: 0 auto;
   }
   .card-avatar{
@@ -437,10 +438,19 @@ header{
   }
   &.request-profile{
     display: block;
-    .card-avatar{
+    margin-bottom: 2em;
+    @media(min-width: 415px){
+      display: flex;
+    }
+    .card-avatar{    
       margin: 0 auto;
       display: block;
       border-radius: 50px;
+      @media(min-width: 415px){
+        
+        margin: 0 2em 0 1em;
+      }
+      
     }
   }
 }
@@ -504,7 +514,7 @@ header{
   min-height: auto;
 }
 h1.h1-title.req-prev-title {
-  max-width: 600px;
+  max-width: 800px;
   margin-bottom: 1em;
 }
 
@@ -539,12 +549,47 @@ h1.h1-title.req-prev-title {
     }
   }
 }
-
-.fa-question {
-  color: #ffffff;
+.fa-question{
+  color: white;
+}
+.card-avatar {
+  display: block;
+  border-radius: 50px;
+}
+.request-date{
+  font-size: 20px;
 }
 
-.user-card.request-profile {
-  max-width: 400px;
-  margin: 0 auto;
+.beneficiary-bts{
+  display: block;
+  flex-flow: row;
+  justify-content: space-between;
+  @media(min-width: 415px){
+    display: flex;
+  }
+  .third-bt.ben-end-bt {
+    min-height: auto;
+    min-width: auto;
+    padding: .2em 1em;
+    margin: 7px 0 0 auto;
+    display: block;
+  }
+}
+.event-card .volunteers-count {
+  max-width: auto;
+  @media(min-width: 415px){
+    max-width: 150px;
+  }
+}
+
+#rating {
+  min-width: 50px;
+  /* border: none; */
+  border-radius: 5px;
+  text-indent: 10px;
+  border-color: #4d0343;
+}
+
+.fa-question {
+  color: #fff;
 }

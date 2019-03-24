@@ -4,7 +4,7 @@
             <p class="sub-header">Hi {{user.firstName}}, here is your list of active events where you are enrolled.</p>
             <div role="navigation" class="view-needs">
                 <nuxt-link to="/newrequest" class="third-bt primary-bt today-needs-bt" role="button" aria-label="Submit new Request">New Request</nuxt-link>
-                <button class="third-bt all-needs-bt" role="button" aria-label="Events">Events</button>
+                <nuxt-link to="/events" class="third-bt today-needs-bt" role="button" aria-label="Events">Events</nuxt-link>
             </div>
 
             <!-- <div class="event-date">
@@ -15,11 +15,19 @@
                 <h2 :aria-label="`${r.title}`" class="event-title">
                     {{r.title}}
                 </h2>
+                <span class="request-date">{{$moment(r.starts).format('ddd, hA')}}</span>
+                <div class="beneficiary-bts">
                 <div class="volunteers-count" :aria-label="`${r.userRegistrations.length} volunteers applied`">
                     {{r.userRegistrations.length}} volunteers
                 </div>
-
-
+                <!-- <div class="volunteers-count" :aria-label="`${r.userRegistrations.length} volunteers applied`" @click="handleEdit(r._id)">
+                    Edit
+                </div> -->
+                <nuxt-link :to="`/requests/${r._id}/end`" class="third-bt ben-end-bt" aria-label="End request">
+                    End Request
+                </nuxt-link>
+                
+               </div>
             </nuxt-link>
 
             
@@ -36,7 +44,8 @@ export default {
     },
     data() {
         return {
-            requests: null
+            requests: null,
+            edit_id: null
         }
     },
     computed: {
@@ -44,6 +53,13 @@ export default {
             return this.$store.state.user
         }
     },
-    
+    methods: {
+        handleEnd() {
+            return true
+        },
+        handleEdit(x) {
+            this.edit_id = x
+        }
+    }
 }
 </script>
