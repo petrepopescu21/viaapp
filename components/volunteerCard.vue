@@ -38,6 +38,7 @@ export default {
         _userId: this.id
       }).then(res=>{
         this.isConfirmed = true
+        this.$store.state.socketConn.emit('accept',res.data)
       })
     }
   }

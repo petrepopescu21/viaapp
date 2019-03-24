@@ -1,10 +1,16 @@
 <template>
-<div>
-    <h1>What are you?</h1>
+<div id="main" role="main">
+            <h1 class="h1-title req-prev-title">Choose the account type!</h1>
+            <p class="sub-header request-dec">Hi {{this.user.firstName}}, here is your list of active events where you are enrolled.</p>
+
     <!-- <profile-form :value="user" @input="(newUser)=>{user=newUser}"></profile-form> -->
-    <button v-on:click="handleRegister(0)">User</button>
-    <button v-on:click="handleRegister(1)">Volunteer</button>
-    <button v-on:click="handleRegister(2)">Promoter</button>
+    <div role="navigation" class="view-needs">
+                <button class="third-bt primary-bt bt-green" role="button" @click="handleRegister(0)" aria-label="Sign Up as a Beneficiary">Beneficiary</button>
+            </div>
+            <div role="navigation" class="view-needs">
+                    <button class="third-bt" role="button" aria-label="Sign Up as a volunteer" @click="handleRegister(1)">Volunteer</button>
+                </div>
+
 </div>
 </template>
 
@@ -25,17 +31,16 @@ export default {
   methods: {
     handleSubmit() {
       this.$axios.post("/api/users", this.user).then(res => {
-        console.log("OK");
+        // console.log("OK");
       });
     },
     handleRegister(type) {
       let x = this.user;
       x.accountType = type;
       this.$axios.post("/api/users", x).then(res => {
-        this.$store.commit("user",res.data)
-        
+        this.$store.commit("user", res.data);
       });
-      this.$router.push('/')
+      this.$router.push("/");
     }
   }
 };

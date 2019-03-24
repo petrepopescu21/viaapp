@@ -7,7 +7,8 @@
     </template>
     <navigator v-if="nav" />
     <header v-show="!nav" class="pages-menu">
-            <button @click="toggleNav" role="button" aria-label="Open navigation menu" class="main-menu-bt"><i class="fas fa-bars"></i></button>
+            <button v-if="$route.path=='/'" @click="toggleNav" role="button" aria-label="Open navigation menu" class="main-menu-bt"><i class="fas fa-bars"></i></button>
+            <button v-else @click="$router.go(-1)" role="button" aria-label="Back one page" class="main-menu-bt"><i class="fas fa-arrow-left"></i></button>
             <nuxt-link role="button" aria-label="About this application" class="main-menu-bt" to="/faq"><i class="fas fa-question"></i></nuxt-link>
     </header>
     <nuxt v-if="user&&!nav" />

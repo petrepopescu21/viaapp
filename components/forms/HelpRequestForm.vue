@@ -86,13 +86,13 @@ export default {
         ownerId: this.$store.state.user._id,
         userRegistrations: []
       }).then(res=>{
-          console.log('Here')
+          // console.log('Here')
           this.$store.state.socketConn.emit('newrequest',res.data)
           this.$router.push('/')
       })
     },
     getCurrentLoc() {
-      console.log(locString);
+      // console.log(locString);
     },
     getList: debounce(function() {
       if (this.keyboard != "")

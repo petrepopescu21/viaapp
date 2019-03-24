@@ -3,9 +3,7 @@ var express = require('express')
 var api = express.Router()
 var config = require("../../nuxt.config")
 
-const socket = require('socket.io')
-const server = http.createServer(app)
-const io = socket(server)
+const io = require('../index')
 
 
 const gc = require('@google/maps').createClient({
@@ -21,7 +19,7 @@ const a = axios.create({
 })
 
 api.all('*',(req,res,next)=>{
-    console.log(req.path)
+    // console.log(req.path)
     next()
 })
 
@@ -59,7 +57,6 @@ api.post('/requests/apply',(req,res)=>{
 
 api.post('/requests/accept',(req,res)=>{
     a.patch('/helprequestregistrations',req.body).then(response=>{
-        io.broadcast('accept',response.data)
         res.send(response.data)
     })
 })
@@ -78,7 +75,7 @@ api.post('/users/:id/requests',(req,res)=>{
 })
 
 api.get('/requests/:id',(req,res)=>{
-    console.log(req.params)
+    // console.log(req.params)
     a.get(`/helprequests/${req.params.id}`).then(response=>{
         res.send(response.data)
     }).catch(err=>{

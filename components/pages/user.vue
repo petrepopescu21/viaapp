@@ -1,7 +1,7 @@
 <template>
     <div id="main" role="main">
             <h1 class="h1-title">Dashboard</h1>
-            <p class="sub-header">Hi Alex, here is your list of active events where you are enrolled.</p>
+            <p class="sub-header">Hi ${{user.firstName}}, here is your list of active events where you are enrolled.</p>
             <div role="navigation" class="view-needs">
                 <nuxt-link to="/newrequest" class="third-bt primary-bt today-needs-bt" role="button" aria-label="New Request">New Request</nuxt-link>
                 <button class="third-bt all-needs-bt" role="button" aria-label="Today needs">Events</button>

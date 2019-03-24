@@ -52,7 +52,7 @@ async function start() {
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res) {
-      console.log(req.user)
+      // console.log(req.user)
       // Successful authentication, redirect home.
       res.redirect('/');
     });
@@ -93,7 +93,7 @@ async function start() {
   })
 
   io.on('connection', (socket) => {
-    
+    module.exports = socket
     var room = null
     if(socket.handshake.query.user.accountType == 0)
       room = "users"
@@ -104,6 +104,16 @@ async function start() {
     
     socket.on('location',function(data){
       s.sendLocation(data.user, data.pos)
+    })
+
+    socket.on('accept',function(data){
+      socket.to('volunteers').emit('requestaccepted',data)
+    })
+
+    socket.on('accept',function(data){
+      setTimeout(()=>{
+        socket.to('volunteers').emit('requestreminder',data)
+      },10000)
     })
 
     socket.on('newrequest',function(data){

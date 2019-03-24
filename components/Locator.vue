@@ -8,7 +8,7 @@ export default {
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition(
         position => {
-            console.log(position)
+            // console.log(position)
             let obj = {
                 user: this.$store.state.user._id,
                 pos: {

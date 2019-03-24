@@ -1,7 +1,7 @@
 <template>
 <div>
     <h1 class="h1-title">Dashboard</h1>
-    <p class="sub-header">Hi Alex, here is your list of active events where you are enrolled.</p>
+    <p class="sub-header">Hi {{$store.state.user.firstName}}, here is your list of active events where you are enrolled.</p>
     <help-form />
 </div>
 </template>
