@@ -7,35 +7,19 @@
                 <button class="third-bt all-needs-bt" role="button" aria-label="Today needs">Events</button>
             </div>
 
-            <div class="event-date">
+            <!-- <div class="event-date">
                 March 27, 2019
-            </div>
-            <div class="event-card" role="button" aria-roledescription="View: I need help to go to the pharmacy this weekend">
+            </div> -->
+            <div v-for="r in reqs" :key="r._id" class="event-card" role="button" :aria-roledescription="`View: ${r.title}`">
                 <h2 class="event-title">
-                    I need help to go to the pharmacy this weekend
+                    {{title}}
                 </h2>
                 <div class="volunteers-count" aria-label="5 volunteers">
                     10 volunteers
                 </div>
             </div>
 
-            <div class="event-card" role="button" aria-roledescription="View: I need help to go to the pharmacy this weekend">
-                <h2 class="event-title">
-                    Monday I want to go to do some shopping.
-                </h2>
-                <div class="volunteers-count" aria-label="5 volunteers">
-                    7 volunteers
-                </div>
-            </div>
-
-            <div class="event-card" role="button" aria-roledescription="View: I need help to go to the pharmacy this weekend">
-                <h2 class="event-title">
-                    Friday I like to go to a symphony concert. 
-                </h2>
-                <div class="volunteers-count" aria-label="5 volunteers">
-                    5 volunteers
-                </div>
-            </div>
+            
             
         </div>
 </template>
@@ -43,8 +27,20 @@
 <script>
 import HelpForm from '~/components/forms/HelpRequestForm'
 export default {
+    props: ["reqs"],
     components: {
         HelpForm
-    }
+    },
+    data() {
+        return {
+            requests: null
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
+        }
+    },
+    
 }
 </script>

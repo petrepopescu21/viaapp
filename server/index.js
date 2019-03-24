@@ -67,7 +67,7 @@ async function start() {
   }
 
   app.all('*', (req, res, next) => {
-    if (req.path == "/login" || req.path.match('assets'))
+    if (req.path == "/login" || req.path.match('assets') || req.path.match('worker') || req.path.match('manifest') || req.path.match('_nuxt'))
       next()
     else
       ensureAuth(req, res, next)
@@ -101,7 +101,7 @@ async function start() {
       room = "volunteers"
 
     socket.join(room)
-
+    
     socket.on('location',function(data){
       s.sendLocation(data.user, data.pos)
     })

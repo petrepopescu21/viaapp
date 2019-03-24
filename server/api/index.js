@@ -45,6 +45,19 @@ api.post('/requests',(req,res)=>{
     })
 })
 
+api.post('/users/:id/requests',(req,res)=>{
+    a.put('/helprequestregistrations',{
+        _userId: req.params.id,
+        accountType: req.body.accountType
+    }).then(response=>{
+        res.send(response.data)
+    }).catch(err=>{
+        console.log(err)
+        res.status(400)
+        res.send("Bad request")
+    })
+})
+
 api.get('/requests/:id',(req,res)=>{
     console.log(req.params)
     a.get(`/helprequests/${req.params.id}`).then(response=>{
@@ -64,7 +77,17 @@ api.get('/requests/:lat/:lng',(req,res)=>{
 api.get('/map',(req,res)=>{
     axios.get(`https://maps.googleapis.com/maps/api/js?key=${config.server.google.mapskey}`)
 })
-
+api.get('/geocode/:latlng',(req,res)=>{
+    gc.reverseGeocode({
+        latlng: req.params.latlng,
+        result_type: ['premise','establishment']
+    }).asPromise().then(response=>{
+        res.send(response)
+    }).catch(err=>{
+        res.status(400)
+        res.send(err)
+    })
+})
 api.get('/geocode/:addr/:latlng',(req,res)=>{
     gc.placesNearby({
         location: `${req.params.latlng}`,

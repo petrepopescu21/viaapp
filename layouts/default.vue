@@ -6,9 +6,9 @@
       <notifier />
     </template>
     <navigator v-if="nav" />
-    <header v-if="!nav" class="pages-menu">
+    <header v-show="!nav" class="pages-menu">
             <button @click="toggleNav" role="button" aria-label="Open navigation menu" class="main-menu-bt"><i class="fas fa-bars"></i></button>
-            <button role="button" aria-label="About this application" class="main-menu-bt"><i class="fas fa-question"></i></button>
+            <nuxt-link role="button" aria-label="About this application" class="main-menu-bt" to="/faq"><i class="fas fa-question"></i></nuxt-link>
     </header>
     <nuxt v-if="user&&!nav" />
   </div>

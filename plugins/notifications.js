@@ -1,6 +1,4 @@
 import Vue from 'vue'
-import VueNativeNotification from 'vue-native-notification'
+import VueNotification from 'vue-notifications'
 
-Vue.use(VueNativeNotification, {
-    requestOnNotify: true
-})
+Vue.use(VueNotification)
