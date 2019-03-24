@@ -2,7 +2,7 @@
             <form role="form" class="from" v-on:submit.prevent="formSubmit">
                 <div>
                     <label for="event-title">Event title</label>
-                    <input id="event-title" type="text" name="event-title" required aria-required="true" v-model="item.title">
+                    <input id="event-title" type="text" name="event-title" required aria-required="true" v-model="item.title" ref="title">
                     <!-- <span id="nameError" class="input-error-message" aria-live="polite">Event title invalid</span> -->
                 </div>
                 <div>
@@ -61,6 +61,9 @@ export default {
         deadline: null
       }
     };
+  },
+  mounted() {
+    document.getElementById('event-title').focus()
   },
   computed: {
     loc() {

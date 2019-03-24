@@ -1,21 +1,21 @@
 <template>
     <div id="main" role="main">
             <h1 class="h1-title">Dashboard</h1>
-            <p class="sub-header">Hi ${{user.firstName}}, here is your list of active events where you are enrolled.</p>
+            <p class="sub-header">Hi {{user.firstName}}, here is your list of active events where you are enrolled.</p>
             <div role="navigation" class="view-needs">
-                <nuxt-link to="/newrequest" class="third-bt primary-bt today-needs-bt" role="button" aria-label="New Request">New Request</nuxt-link>
-                <button class="third-bt all-needs-bt" role="button" aria-label="Today needs">Events</button>
+                <nuxt-link to="/newrequest" class="third-bt primary-bt today-needs-bt" role="button" aria-label="Submit new Request">New Request</nuxt-link>
+                <button class="third-bt all-needs-bt" role="button" aria-label="Events">Events</button>
             </div>
 
             <!-- <div class="event-date">
                 March 27, 2019
             </div> -->
-            <nuxt-link :to="`/requests/${r._id}/volunteers`" v-for="r in reqs" :key="r._id" class="event-card" role="button" :aria-roledescription="`View: ${r.title}`">
+            <nuxt-link :to="`/requests/${r._id}/volunteers`" v-for="r in reqs" :key="r._id" class="event-card" role="button" :aria-roledescription="`Request with ${r.title}`">
                 
-                <h2 class="event-title">
+                <h2 :aria-label="`${r.title}`" class="event-title">
                     {{r.title}}
                 </h2>
-                <div class="volunteers-count" aria-label="5 volunteers">
+                <div class="volunteers-count" :aria-label="`${r.userRegistrations.length} volunteers applied`">
                     {{r.userRegistrations.length}} volunteers
                 </div>
 

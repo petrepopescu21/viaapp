@@ -1,7 +1,7 @@
 <template>
     <div id="main" role="main">
             <h1 class="h1-title">Volunteers</h1>
-            <p class="sub-header">Hi Alex, here is your list of active events where you are enrolled.</p>
+            <p class="sub-header">{{this.$store.state.user.firstName}}, here is your list of active events where you are enrolled.</p>
             <div role="navigation" class="view-needs">
                 <button class="third-bt primary-bt all-needs-bt" role="button" aria-label="Today needs">All</button>
                 <button class="third-bt today-needs-bt" role="button" aria-label="Today needs">Favorites</button>
